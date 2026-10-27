@@ -180,17 +180,6 @@ export const getUserProfile = async (req, res, next) => {
     next(error);
   }
 };
-        location: user.location,
-        languagePreference: user.languagePreference,
-        avatar: user.avatar,
-      });
-    } else {
-      res.status(404).json({ message: 'User not found' });
-    }
-  } catch (error) {
-    next(error);
-  }
-};
 
 // @desc    Update user profile
 // @route   PUT /api/auth/profile
