@@ -1,0 +1,12 @@
+import express from 'express';
+import { getFarms, getFarmById, createFarm, updateFarm, deleteFarm } from '../controllers/farmController.js';
+import { protect } from '../middleware/authMiddleware.js';
+
+const router = express.Router();
+
+router.use(protect); // All farm routes require authentication
+
+router.route('/').get(getFarms).post(createFarm);
+router.route('/:id').get(getFarmById).put(updateFarm).delete(deleteFarm);
+
+export default router;
