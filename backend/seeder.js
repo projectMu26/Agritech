@@ -14,7 +14,16 @@ dotenv.config();
 
 const seedData = async () => {
   try {
-    await connectDB();
+    const conn = await connectDB();
+    if (!conn) {
+      console.log('\n============================================================');
+      console.log('⚠️  Cannot seed database because MongoDB is not connected.');
+      console.log('👉 To fix this, provide a free MongoDB Atlas connection string in backend/.env:');
+      console.log('   MONGO_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/agritech');
+      console.log('   Or install/start MongoDB Community Server locally.');
+      console.log('============================================================\n');
+      process.exit(1);
+    }
 
     console.log('🧹 Purging existing data...');
     await User.deleteMany();
