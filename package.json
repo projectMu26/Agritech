@@ -1,15 +1,26 @@
 {
-  "name": "agritech-root",
+  "name": "agritech",
   "version": "1.0.0",
+  "type": "module",
   "description": "AgriTech - Smart Farming Management System (MERN Stack)",
   "scripts": {
+    "build": "npm --prefix frontend install && npm --prefix frontend run build",
     "server": "npm run start --prefix backend",
     "server:dev": "npm run dev --prefix backend",
     "client": "npm run dev --prefix frontend",
     "client:build": "npm run build --prefix frontend",
     "seed": "npm run seed --prefix backend",
-    "install:all": "npm install --prefix backend && npm install --prefix frontend",
+    "install:all": "npm install && npm install --prefix backend && npm install --prefix frontend",
     "dev": "concurrently \"npm run dev --prefix backend\" \"npm run dev --prefix frontend\""
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.9.5",
+    "morgan": "^1.10.0"
   },
   "devDependencies": {
     "concurrently": "^9.1.2"
